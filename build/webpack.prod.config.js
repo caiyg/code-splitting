@@ -23,7 +23,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: path.posix.join('[id].[chunkhash].js'),
     publicPath: './'
   },
-  externals:['react','react-dom','echarts'],
+  // externals:['react','react-dom','echarts'],
   module: {
     rules: [{
       test: /(\.css|\.sass|\.scss)$/,
@@ -106,11 +106,17 @@ const webpackConfig = merge(baseWebpackConfig, {
       // filename: 'manifest.js',
       minChunks: Infinity
     }),
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, '../static'),
-      to: 'static',
-      ignore: ['.*']
-    }])
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap:true,
+      output:{
+        comments:false
+      }
+    })
+    // new CopyWebpackPlugin([{
+    //   from: path.resolve(__dirname, '../static'),
+    //   to: 'static',
+    //   ignore: ['.*']
+    // }])
   ].concat(utils.htmlProductionPlugin())
 })
 

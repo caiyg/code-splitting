@@ -1,0 +1,15 @@
+{
+  "pages":[
+    {
+      "entry": "page1",
+      "title": "首页",
+      "tpl": "page2.html"
+    },{
+      "entry": "page2",
+      "title": "公告",
+      "tpl": "page2.html"
+    }
+  ],
+  "basePath": "./src/pages/",
+  "templatePath": "./templates/"
+}

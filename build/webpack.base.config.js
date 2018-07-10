@@ -24,18 +24,19 @@ module.exports = {
     }
   },
   module: {
-    rules: [{
-      test: /\.js[x]?$/,
-      loader: 'eslint-loader',
-      enforce: 'pre',
-      include: resolve('src'),
-      // exclude: [/node_modules/,resolve('src/utils/md5.js'),resolve('src/utils/jquery.qrcode.min.js')],
-      exclude: [/node_modules/,resolve('src/utils')],
-      options: {
-        fix: false,
-        emitWarning: true
-      }
-    },
+    rules: [
+      // {
+      //   test: /\.js[x]?$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: resolve('src'),
+      //   // exclude: [/node_modules/,resolve('src/utils/md5.js'),resolve('src/utils/jquery.qrcode.min.js')],
+      //   exclude: [/node_modules/,resolve('src/utils')],
+      //   options: {
+      //     fix: false,
+      //     emitWarning: true
+      //   }
+      // },
     {
       test: /\.js[x]?$/,
       loader: "babel-loader",

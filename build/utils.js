@@ -9,7 +9,7 @@ exports.entries = function () {
     result[ p.entry ] = ['babel-polyfill',path.resolve (App.basePath, p.entry) + '/index.js'];
   });
   // 分块
-  result.common = ['react','react-dom'];
+  // result.common = ['react','react-dom'];
   return result;
 };
 exports.assetsPath = function (_path) {
