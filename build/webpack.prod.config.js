@@ -23,7 +23,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: path.posix.join('[id].[chunkhash].js'),
     publicPath: './'
   },
-  // externals:['react','react-dom','echarts'],
+  // externals:['react','react-dom'],
   module: {
     rules: [{
       test: /(\.css|\.sass|\.scss)$/,
@@ -69,16 +69,17 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new ExtractTextPlugin('[name]-[hash].css'),
     // 将所有从node_modules中的模块打包到vendor
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor',
-    //   minChunks: 5,
-    //   // minChunks(module) {
-    //   //   return (
-    //   //     module.resource && /\.js$/.test(module.resource) &&
-    //   //     module.resource.indexOf(path.join(__dirname, '../node_modules') === 0)
-    //   //   )
-    //   // }
-    // }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      // minChunks: Infinity
+      // minChunks: 5,
+      minChunks(module) {
+        return (
+          module.resource && /\.js$/.test(module.resource) &&
+          module.resource.indexOf(path.join(__dirname, '../node_modules') === 0)
+        )
+      }
+    }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'common',
     //   minChunks: 5,
